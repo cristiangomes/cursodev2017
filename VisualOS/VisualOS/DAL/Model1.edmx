@@ -5,40 +5,462 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Model1.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="tb_p4l_log">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'bdvirtualos.rl_agenda' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="rl_agenda">
+          <Key>
+            <PropertyRef Name="ID_Usuario" />
+            <PropertyRef Name="ID_Ordem_Servico" />
+            <PropertyRef Name="Agendamento" />
+          </Key>
+          <Property Name="ID_Usuario" Type="int" Nullable="false" />
+          <Property Name="ID_Ordem_Servico" Type="int" Nullable="false" />
+          <Property Name="Agendamento" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'bdvirtualos.rl_cargo_usuario' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="rl_cargo_usuario">
+          <Key>
+            <PropertyRef Name="ID_Cargo" />
+            <PropertyRef Name="ID_Usuario" />
+            <PropertyRef Name="Data" />
+          </Key>
+          <Property Name="ID_Cargo" Type="int" Nullable="false" />
+          <Property Name="ID_Usuario" Type="int" Nullable="false" />
+          <Property Name="Data" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'bdvirtualos.rl_servico_os' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="rl_servico_os">
+          <Key>
+            <PropertyRef Name="ID_Ordem_Servico" />
+            <PropertyRef Name="ID_Servico" />
+            <PropertyRef Name="ID_Usuario" />
+          </Key>
+          <Property Name="ID_Ordem_Servico" Type="int" Nullable="false" />
+          <Property Name="ID_Servico" Type="int" Nullable="false" />
+          <Property Name="ID_Usuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_cargo">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ID_Usuario" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Browser" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="Complemento" Type="text" Nullable="false" />
-          <Property Name="DataHora" Type="datetime" Precision="0" Nullable="false" />
-          <Property Name="IP" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="Operacao" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Descricao" Type="text" />
         </EntityType>
+        <EntityType Name="tb_ordemservico">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID_Usuario_Responsavel" Type="int" Nullable="false" />
+          <Property Name="Data_abertura" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="Data_conclusao" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="Tipo_OS" Type="char" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_servico">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Descricao" Type="text" />
+        </EntityType>
+        <EntityType Name="tb_usuario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="CPF" Type="int" Nullable="false" />
+          <Property Name="DataNascimento" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="DDD" Type="int" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="NomeCompleto" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Senha" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Telefone" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="rl_agenda_ibfk_1">
+          <End Role="tb_usuario" Type="Self.tb_usuario" Multiplicity="1" />
+          <End Role="rl_agenda" Type="Self.rl_agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="rl_agenda">
+              <PropertyRef Name="ID_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rl_agenda_ibfk_2">
+          <End Role="tb_ordemservico" Type="Self.tb_ordemservico" Multiplicity="1" />
+          <End Role="rl_agenda" Type="Self.rl_agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_ordemservico">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="rl_agenda">
+              <PropertyRef Name="ID_Ordem_Servico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rl_cargo_usuario_ibfk_1">
+          <End Role="tb_usuario" Type="Self.tb_usuario" Multiplicity="1" />
+          <End Role="rl_cargo_usuario" Type="Self.rl_cargo_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="rl_cargo_usuario">
+              <PropertyRef Name="ID_Cargo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rl_cargo_usuario_ibfk_2">
+          <End Role="tb_cargo" Type="Self.tb_cargo" Multiplicity="1" />
+          <End Role="rl_cargo_usuario" Type="Self.rl_cargo_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_cargo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="rl_cargo_usuario">
+              <PropertyRef Name="ID_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rl_servico_os_ibfk_1">
+          <End Role="tb_ordemservico" Type="Self.tb_ordemservico" Multiplicity="1" />
+          <End Role="rl_servico_os" Type="Self.rl_servico_os" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_ordemservico">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="rl_servico_os">
+              <PropertyRef Name="ID_Ordem_Servico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rl_servico_os_ibfk_2">
+          <End Role="tb_servico" Type="Self.tb_servico" Multiplicity="1" />
+          <End Role="rl_servico_os" Type="Self.rl_servico_os" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_servico">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="rl_servico_os">
+              <PropertyRef Name="ID_Servico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rl_servico_os_ibfk_3">
+          <End Role="tb_usuario" Type="Self.tb_usuario" Multiplicity="1" />
+          <End Role="rl_servico_os" Type="Self.rl_servico_os" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="rl_servico_os">
+              <PropertyRef Name="ID_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tb_ordemservico_ibfk_1">
+          <End Role="tb_usuario" Type="Self.tb_usuario" Multiplicity="1" />
+          <End Role="tb_ordemservico" Type="Self.tb_ordemservico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tb_ordemservico">
+              <PropertyRef Name="ID_Usuario_Responsavel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Model1StoreContainer">
-          <EntitySet Name="tb_p4l_log" EntityType="Self.tb_p4l_log" Schema="consuti_p4l" store:Type="Tables" />
+          <EntitySet Name="tb_cargo" EntityType="Self.tb_cargo" Schema="bdvirtualos" store:Type="Tables" />
+          <EntitySet Name="tb_ordemservico" EntityType="Self.tb_ordemservico" Schema="bdvirtualos" store:Type="Tables" />
+          <EntitySet Name="tb_servico" EntityType="Self.tb_servico" Schema="bdvirtualos" store:Type="Tables" />
+          <EntitySet Name="tb_usuario" EntityType="Self.tb_usuario" Schema="bdvirtualos" store:Type="Tables" />
+          <EntitySet Name="rl_agenda" EntityType="Self.rl_agenda" store:Type="Tables" store:Schema="bdvirtualos">
+            <DefiningQuery>SELECT
+`rl_agenda`.`ID_Usuario`, 
+`rl_agenda`.`ID_Ordem_Servico`, 
+`rl_agenda`.`Agendamento`
+FROM `rl_agenda` AS `rl_agenda`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="rl_cargo_usuario" EntityType="Self.rl_cargo_usuario" store:Type="Tables" store:Schema="bdvirtualos">
+            <DefiningQuery>SELECT
+`rl_cargo_usuario`.`ID_Cargo`, 
+`rl_cargo_usuario`.`ID_Usuario`, 
+`rl_cargo_usuario`.`Data`
+FROM `rl_cargo_usuario` AS `rl_cargo_usuario`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="rl_servico_os" EntityType="Self.rl_servico_os" store:Type="Tables" store:Schema="bdvirtualos">
+            <DefiningQuery>SELECT
+`rl_servico_os`.`ID_Ordem_Servico`, 
+`rl_servico_os`.`ID_Servico`, 
+`rl_servico_os`.`ID_Usuario`
+FROM `rl_servico_os` AS `rl_servico_os`</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="rl_agenda_ibfk_1" Association="Self.rl_agenda_ibfk_1">
+            <End Role="tb_usuario" EntitySet="tb_usuario" />
+            <End Role="rl_agenda" EntitySet="rl_agenda" />
+          </AssociationSet>
+          <AssociationSet Name="rl_agenda_ibfk_2" Association="Self.rl_agenda_ibfk_2">
+            <End Role="tb_ordemservico" EntitySet="tb_ordemservico" />
+            <End Role="rl_agenda" EntitySet="rl_agenda" />
+          </AssociationSet>
+          <AssociationSet Name="rl_cargo_usuario_ibfk_1" Association="Self.rl_cargo_usuario_ibfk_1">
+            <End Role="tb_usuario" EntitySet="tb_usuario" />
+            <End Role="rl_cargo_usuario" EntitySet="rl_cargo_usuario" />
+          </AssociationSet>
+          <AssociationSet Name="rl_cargo_usuario_ibfk_2" Association="Self.rl_cargo_usuario_ibfk_2">
+            <End Role="tb_cargo" EntitySet="tb_cargo" />
+            <End Role="rl_cargo_usuario" EntitySet="rl_cargo_usuario" />
+          </AssociationSet>
+          <AssociationSet Name="rl_servico_os_ibfk_1" Association="Self.rl_servico_os_ibfk_1">
+            <End Role="tb_ordemservico" EntitySet="tb_ordemservico" />
+            <End Role="rl_servico_os" EntitySet="rl_servico_os" />
+          </AssociationSet>
+          <AssociationSet Name="rl_servico_os_ibfk_2" Association="Self.rl_servico_os_ibfk_2">
+            <End Role="tb_servico" EntitySet="tb_servico" />
+            <End Role="rl_servico_os" EntitySet="rl_servico_os" />
+          </AssociationSet>
+          <AssociationSet Name="rl_servico_os_ibfk_3" Association="Self.rl_servico_os_ibfk_3">
+            <End Role="tb_usuario" EntitySet="tb_usuario" />
+            <End Role="rl_servico_os" EntitySet="rl_servico_os" />
+          </AssociationSet>
+          <AssociationSet Name="tb_ordemservico_ibfk_1" Association="Self.tb_ordemservico_ibfk_1">
+            <End Role="tb_usuario" EntitySet="tb_usuario" />
+            <End Role="tb_ordemservico" EntitySet="tb_ordemservico" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="tb_p4l_log" EntityType="Model1.tb_p4l_log" />
+          <EntitySet Name="tb_cargo" EntityType="Model1.tb_cargo" />
+          <EntitySet Name="tb_ordemservico" EntityType="Model1.tb_ordemservico" />
+          <EntitySet Name="tb_servico" EntityType="Model1.tb_servico" />
+          <EntitySet Name="tb_usuario" EntityType="Model1.tb_usuario" />
+          <EntitySet Name="rl_agenda" EntityType="Model1.rl_agenda" />
+          <EntitySet Name="rl_cargo_usuario" EntityType="Model1.rl_cargo_usuario" />
+          <EntitySet Name="rl_servico_os" EntityType="Model1.rl_servico_os" />
+          <AssociationSet Name="rl_cargo_usuario_ibfk_2" Association="Model1.rl_cargo_usuario_ibfk_2">
+            <End Role="tb_cargo" EntitySet="tb_cargo" />
+            <End Role="rl_cargo_usuario" EntitySet="rl_cargo_usuario" />
+          </AssociationSet>
+          <AssociationSet Name="rl_agenda_ibfk_2" Association="Model1.rl_agenda_ibfk_2">
+            <End Role="tb_ordemservico" EntitySet="tb_ordemservico" />
+            <End Role="rl_agenda" EntitySet="rl_agenda" />
+          </AssociationSet>
+          <AssociationSet Name="rl_servico_os_ibfk_1" Association="Model1.rl_servico_os_ibfk_1">
+            <End Role="tb_ordemservico" EntitySet="tb_ordemservico" />
+            <End Role="rl_servico_os" EntitySet="rl_servico_os" />
+          </AssociationSet>
+          <AssociationSet Name="tb_ordemservico_ibfk_1" Association="Model1.tb_ordemservico_ibfk_1">
+            <End Role="tb_usuario" EntitySet="tb_usuario" />
+            <End Role="tb_ordemservico" EntitySet="tb_ordemservico" />
+          </AssociationSet>
+          <AssociationSet Name="rl_servico_os_ibfk_2" Association="Model1.rl_servico_os_ibfk_2">
+            <End Role="tb_servico" EntitySet="tb_servico" />
+            <End Role="rl_servico_os" EntitySet="rl_servico_os" />
+          </AssociationSet>
+          <AssociationSet Name="rl_agenda_ibfk_1" Association="Model1.rl_agenda_ibfk_1">
+            <End Role="tb_usuario" EntitySet="tb_usuario" />
+            <End Role="rl_agenda" EntitySet="rl_agenda" />
+          </AssociationSet>
+          <AssociationSet Name="rl_cargo_usuario_ibfk_1" Association="Model1.rl_cargo_usuario_ibfk_1">
+            <End Role="tb_usuario" EntitySet="tb_usuario" />
+            <End Role="rl_cargo_usuario" EntitySet="rl_cargo_usuario" />
+          </AssociationSet>
+          <AssociationSet Name="rl_servico_os_ibfk_3" Association="Model1.rl_servico_os_ibfk_3">
+            <End Role="tb_usuario" EntitySet="tb_usuario" />
+            <End Role="rl_servico_os" EntitySet="rl_servico_os" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="tb_p4l_log">
+        <EntityType Name="tb_cargo">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ID_Usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Browser" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Complemento" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <Property Name="DataHora" Type="DateTime" Nullable="false" />
-          <Property Name="IP" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Operacao" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Descricao" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="rl_cargo_usuario" Relationship="Model1.rl_cargo_usuario_ibfk_2" FromRole="tb_cargo" ToRole="rl_cargo_usuario" />
         </EntityType>
+        <EntityType Name="tb_ordemservico">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID_Usuario_Responsavel" Type="Int32" Nullable="false" />
+          <Property Name="Data_abertura" Type="DateTime" Nullable="false" />
+          <Property Name="Data_conclusao" Type="DateTime" Nullable="false" />
+          <Property Name="Tipo_OS" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="rl_agenda" Relationship="Model1.rl_agenda_ibfk_2" FromRole="tb_ordemservico" ToRole="rl_agenda" />
+          <NavigationProperty Name="rl_servico_os" Relationship="Model1.rl_servico_os_ibfk_1" FromRole="tb_ordemservico" ToRole="rl_servico_os" />
+          <NavigationProperty Name="tb_usuario" Relationship="Model1.tb_ordemservico_ibfk_1" FromRole="tb_ordemservico" ToRole="tb_usuario" />
+        </EntityType>
+        <EntityType Name="tb_servico">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Descricao" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="rl_servico_os" Relationship="Model1.rl_servico_os_ibfk_2" FromRole="tb_servico" ToRole="rl_servico_os" />
+        </EntityType>
+        <EntityType Name="tb_usuario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="CPF" Type="Int32" Nullable="false" />
+          <Property Name="DataNascimento" Type="DateTime" Nullable="false" />
+          <Property Name="DDD" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NomeCompleto" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Senha" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Telefone" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tb_ordemservico" Relationship="Model1.tb_ordemservico_ibfk_1" FromRole="tb_usuario" ToRole="tb_ordemservico" />
+          <NavigationProperty Name="rl_agenda" Relationship="Model1.rl_agenda_ibfk_1" FromRole="tb_usuario" ToRole="rl_agenda" />
+          <NavigationProperty Name="rl_cargo_usuario" Relationship="Model1.rl_cargo_usuario_ibfk_1" FromRole="tb_usuario" ToRole="rl_cargo_usuario" />
+          <NavigationProperty Name="rl_servico_os" Relationship="Model1.rl_servico_os_ibfk_3" FromRole="tb_usuario" ToRole="rl_servico_os" />
+        </EntityType>
+        <EntityType Name="rl_agenda">
+          <Key>
+            <PropertyRef Name="ID_Usuario" />
+            <PropertyRef Name="ID_Ordem_Servico" />
+            <PropertyRef Name="Agendamento" />
+          </Key>
+          <Property Name="ID_Usuario" Type="Int32" Nullable="false" />
+          <Property Name="ID_Ordem_Servico" Type="Int32" Nullable="false" />
+          <Property Name="Agendamento" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="tb_ordemservico" Relationship="Model1.rl_agenda_ibfk_2" FromRole="rl_agenda" ToRole="tb_ordemservico" />
+          <NavigationProperty Name="tb_usuario" Relationship="Model1.rl_agenda_ibfk_1" FromRole="rl_agenda" ToRole="tb_usuario" />
+        </EntityType>
+        <EntityType Name="rl_cargo_usuario">
+          <Key>
+            <PropertyRef Name="ID_Cargo" />
+            <PropertyRef Name="ID_Usuario" />
+            <PropertyRef Name="Data" />
+          </Key>
+          <Property Name="ID_Cargo" Type="Int32" Nullable="false" />
+          <Property Name="ID_Usuario" Type="Int32" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="tb_cargo" Relationship="Model1.rl_cargo_usuario_ibfk_2" FromRole="rl_cargo_usuario" ToRole="tb_cargo" />
+          <NavigationProperty Name="tb_usuario" Relationship="Model1.rl_cargo_usuario_ibfk_1" FromRole="rl_cargo_usuario" ToRole="tb_usuario" />
+        </EntityType>
+        <EntityType Name="rl_servico_os">
+          <Key>
+            <PropertyRef Name="ID_Ordem_Servico" />
+            <PropertyRef Name="ID_Servico" />
+            <PropertyRef Name="ID_Usuario" />
+          </Key>
+          <Property Name="ID_Ordem_Servico" Type="Int32" Nullable="false" />
+          <Property Name="ID_Servico" Type="Int32" Nullable="false" />
+          <Property Name="ID_Usuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tb_ordemservico" Relationship="Model1.rl_servico_os_ibfk_1" FromRole="rl_servico_os" ToRole="tb_ordemservico" />
+          <NavigationProperty Name="tb_servico" Relationship="Model1.rl_servico_os_ibfk_2" FromRole="rl_servico_os" ToRole="tb_servico" />
+          <NavigationProperty Name="tb_usuario" Relationship="Model1.rl_servico_os_ibfk_3" FromRole="rl_servico_os" ToRole="tb_usuario" />
+        </EntityType>
+        <Association Name="rl_cargo_usuario_ibfk_2">
+          <End Type="Model1.tb_cargo" Role="tb_cargo" Multiplicity="1" />
+          <End Type="Model1.rl_cargo_usuario" Role="rl_cargo_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_cargo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="rl_cargo_usuario">
+              <PropertyRef Name="ID_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rl_agenda_ibfk_2">
+          <End Type="Model1.tb_ordemservico" Role="tb_ordemservico" Multiplicity="1" />
+          <End Type="Model1.rl_agenda" Role="rl_agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_ordemservico">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="rl_agenda">
+              <PropertyRef Name="ID_Ordem_Servico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rl_servico_os_ibfk_1">
+          <End Type="Model1.tb_ordemservico" Role="tb_ordemservico" Multiplicity="1" />
+          <End Type="Model1.rl_servico_os" Role="rl_servico_os" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_ordemservico">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="rl_servico_os">
+              <PropertyRef Name="ID_Ordem_Servico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tb_ordemservico_ibfk_1">
+          <End Type="Model1.tb_usuario" Role="tb_usuario" Multiplicity="1" />
+          <End Type="Model1.tb_ordemservico" Role="tb_ordemservico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tb_ordemservico">
+              <PropertyRef Name="ID_Usuario_Responsavel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rl_servico_os_ibfk_2">
+          <End Type="Model1.tb_servico" Role="tb_servico" Multiplicity="1" />
+          <End Type="Model1.rl_servico_os" Role="rl_servico_os" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_servico">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="rl_servico_os">
+              <PropertyRef Name="ID_Servico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rl_agenda_ibfk_1">
+          <End Type="Model1.tb_usuario" Role="tb_usuario" Multiplicity="1" />
+          <End Type="Model1.rl_agenda" Role="rl_agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="rl_agenda">
+              <PropertyRef Name="ID_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rl_cargo_usuario_ibfk_1">
+          <End Type="Model1.tb_usuario" Role="tb_usuario" Multiplicity="1" />
+          <End Type="Model1.rl_cargo_usuario" Role="rl_cargo_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="rl_cargo_usuario">
+              <PropertyRef Name="ID_Cargo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rl_servico_os_ibfk_3">
+          <End Type="Model1.tb_usuario" Role="tb_usuario" Multiplicity="1" />
+          <End Type="Model1.rl_servico_os" Role="rl_servico_os" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="rl_servico_os">
+              <PropertyRef Name="ID_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -47,16 +469,73 @@
         <Alias Key="Model" Value="Model1" />
         <Alias Key="Target" Value="Model1.Store" />
         <EntityContainerMapping CdmEntityContainer="Model1Container" StorageEntityContainer="Model1StoreContainer">
-          <EntitySetMapping Name="tb_p4l_log">
-            <EntityTypeMapping TypeName="Model1.tb_p4l_log">
-              <MappingFragment StoreEntitySet="tb_p4l_log">
-                <ScalarProperty Name="Operacao" ColumnName="Operacao" />
-                <ScalarProperty Name="IP" ColumnName="IP" />
-                <ScalarProperty Name="DataHora" ColumnName="DataHora" />
-                <ScalarProperty Name="Complemento" ColumnName="Complemento" />
-                <ScalarProperty Name="Browser" ColumnName="Browser" />
-                <ScalarProperty Name="ID_Usuario" ColumnName="ID_Usuario" />
+          <EntitySetMapping Name="tb_cargo">
+            <EntityTypeMapping TypeName="Model1.tb_cargo">
+              <MappingFragment StoreEntitySet="tb_cargo">
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_ordemservico">
+            <EntityTypeMapping TypeName="Model1.tb_ordemservico">
+              <MappingFragment StoreEntitySet="tb_ordemservico">
+                <ScalarProperty Name="Tipo_OS" ColumnName="Tipo_OS" />
+                <ScalarProperty Name="Data_conclusao" ColumnName="Data_conclusao" />
+                <ScalarProperty Name="Data_abertura" ColumnName="Data_abertura" />
+                <ScalarProperty Name="ID_Usuario_Responsavel" ColumnName="ID_Usuario_Responsavel" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_servico">
+            <EntityTypeMapping TypeName="Model1.tb_servico">
+              <MappingFragment StoreEntitySet="tb_servico">
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_usuario">
+            <EntityTypeMapping TypeName="Model1.tb_usuario">
+              <MappingFragment StoreEntitySet="tb_usuario">
+                <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+                <ScalarProperty Name="Senha" ColumnName="Senha" />
+                <ScalarProperty Name="NomeCompleto" ColumnName="NomeCompleto" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DDD" ColumnName="DDD" />
+                <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
+                <ScalarProperty Name="CPF" ColumnName="CPF" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rl_agenda">
+            <EntityTypeMapping TypeName="Model1.rl_agenda">
+              <MappingFragment StoreEntitySet="rl_agenda">
+                <ScalarProperty Name="Agendamento" ColumnName="Agendamento" />
+                <ScalarProperty Name="ID_Ordem_Servico" ColumnName="ID_Ordem_Servico" />
+                <ScalarProperty Name="ID_Usuario" ColumnName="ID_Usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rl_cargo_usuario">
+            <EntityTypeMapping TypeName="Model1.rl_cargo_usuario">
+              <MappingFragment StoreEntitySet="rl_cargo_usuario">
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="ID_Usuario" ColumnName="ID_Usuario" />
+                <ScalarProperty Name="ID_Cargo" ColumnName="ID_Cargo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rl_servico_os">
+            <EntityTypeMapping TypeName="Model1.rl_servico_os">
+              <MappingFragment StoreEntitySet="rl_servico_os">
+                <ScalarProperty Name="ID_Usuario" ColumnName="ID_Usuario" />
+                <ScalarProperty Name="ID_Servico" ColumnName="ID_Servico" />
+                <ScalarProperty Name="ID_Ordem_Servico" ColumnName="ID_Ordem_Servico" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
