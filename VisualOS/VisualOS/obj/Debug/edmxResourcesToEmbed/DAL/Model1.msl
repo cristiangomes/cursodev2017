@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+  <Alias Key="Model" Value="Model1" />
+  <Alias Key="Target" Value="Model1.Store" />
+  <EntityContainerMapping CdmEntityContainer="Model1Container" StorageEntityContainer="Model1StoreContainer">
+    <EntitySetMapping Name="tb_cargo">
+      <EntityTypeMapping TypeName="Model1.tb_cargo">
+        <MappingFragment StoreEntitySet="tb_cargo">
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_ordemservico">
+      <EntityTypeMapping TypeName="Model1.tb_ordemservico">
+        <MappingFragment StoreEntitySet="tb_ordemservico">
+          <ScalarProperty Name="Tipo_OS" ColumnName="Tipo_OS" />
+          <ScalarProperty Name="Data_conclusao" ColumnName="Data_conclusao" />
+          <ScalarProperty Name="Data_abertura" ColumnName="Data_abertura" />
+          <ScalarProperty Name="ID_Usuario_Responsavel" ColumnName="ID_Usuario_Responsavel" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_servico">
+      <EntityTypeMapping TypeName="Model1.tb_servico">
+        <MappingFragment StoreEntitySet="tb_servico">
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_usuario">
+      <EntityTypeMapping TypeName="Model1.tb_usuario">
+        <MappingFragment StoreEntitySet="tb_usuario">
+          <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+          <ScalarProperty Name="Senha" ColumnName="Senha" />
+          <ScalarProperty Name="NomeCompleto" ColumnName="NomeCompleto" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="DDD" ColumnName="DDD" />
+          <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
+          <ScalarProperty Name="CPF" ColumnName="CPF" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rl_agenda">
+      <EntityTypeMapping TypeName="Model1.rl_agenda">
+        <MappingFragment StoreEntitySet="rl_agenda">
+          <ScalarProperty Name="Agendamento" ColumnName="Agendamento" />
+          <ScalarProperty Name="ID_Ordem_Servico" ColumnName="ID_Ordem_Servico" />
+          <ScalarProperty Name="ID_Usuario" ColumnName="ID_Usuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rl_cargo_usuario">
+      <EntityTypeMapping TypeName="Model1.rl_cargo_usuario">
+        <MappingFragment StoreEntitySet="rl_cargo_usuario">
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="ID_Usuario" ColumnName="ID_Usuario" />
+          <ScalarProperty Name="ID_Cargo" ColumnName="ID_Cargo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rl_servico_os">
+      <EntityTypeMapping TypeName="Model1.rl_servico_os">
+        <MappingFragment StoreEntitySet="rl_servico_os">
+          <ScalarProperty Name="ID_Usuario" ColumnName="ID_Usuario" />
+          <ScalarProperty Name="ID_Servico" ColumnName="ID_Servico" />
+          <ScalarProperty Name="ID_Ordem_Servico" ColumnName="ID_Ordem_Servico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
