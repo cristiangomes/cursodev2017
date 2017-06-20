@@ -4,5 +4,23 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>OrdemServico</h2>
+<div class="form-horizontal">
+    <h4>Cadastro de Ordem de Serviço</h4>
+    <hr />
+    <div class="form-group">
+        <label class="col-sm-3 control-label"><span class="red">*</span>Data de Abertura</label>
+        <div class="col-sm-6 ">
+        <input class="form-control" data-val="true" data-val-date="The field dataAbertura must be a date." data-val-required="O campo dataAbertura é obrigatório." id="Data_abertura" name="Usuario.DataAbertura" required="true" type="text" value="" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label"><span class="red">*</span>Data de Conclusão</label>
+        <div class="col-sm-6 ">
+            <input class="form-control" data-val="true" data-val-date="The field dataConclusao must be a date." data-val-required="O campo dataConclusao é obrigatório." id="Data_conclusao" name="Usuario.DataConclusao" required="true" type="text" value="" />
+        </div>
+    </div>
+    
+    
+</div>
+
 
