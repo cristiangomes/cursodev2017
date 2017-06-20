@@ -1,26 +1,65 @@
-﻿
+﻿@model VisualOS.DAL.tb_ordemservico
+
 @{
-    ViewBag.Title = "OrdemServico";
+    ViewBag.Title = "View";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="form-horizontal">
-    <h4>Cadastro de Ordem de Serviço</h4>
-    <hr />
-    <div class="form-group">
-        <label class="col-sm-3 control-label"><span class="red">*</span>Data de Abertura</label>
-        <div class="col-sm-6 ">
-        <input class="form-control" data-val="true" data-val-date="The field dataAbertura must be a date." data-val-required="O campo dataAbertura é obrigatório." id="Data_abertura" name="Usuario.DataAbertura" required="true" type="text" value="" />
+<h2>View</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Cadastro de ordem de serviço</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ID_Usuario_Responsavel, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ID_Usuario_Responsavel, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ID_Usuario_Responsavel, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Data_abertura, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Data_abertura, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Data_abertura, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Data_conclusao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Data_conclusao, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Data_conclusao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Tipo_OS, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Tipo_OS, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Tipo_OS, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        <label class="col-sm-3 control-label"><span class="red">*</span>Data de Conclusão</label>
-        <div class="col-sm-6 ">
-            <input class="form-control" data-val="true" data-val-date="The field dataConclusao must be a date." data-val-required="O campo dataConclusao é obrigatório." id="Data_conclusao" name="Usuario.DataConclusao" required="true" type="text" value="" />
-        </div>
-    </div>
-    
-    
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
 </div>
 
-
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
