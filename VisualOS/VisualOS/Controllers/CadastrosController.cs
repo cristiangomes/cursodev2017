@@ -88,5 +88,11 @@ namespace VisualOS.Controllers
                 return View();
             }
         }
+
+        public ActionResult CadastrarCargo()
+        {
+            return View();
+        }
+
     }
 }
