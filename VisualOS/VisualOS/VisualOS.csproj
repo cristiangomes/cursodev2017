@@ -294,7 +294,8 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Cadastros\CadastrarOS.cshtml" />
-    <Content Include="Views\Cadastros\Servico.cshtml" />
+    <Content Include="Views\Cadastros\CadastrarCargo.cshtml" />
+    <Content Include="Views\Cadastros\CadastrarServico.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
