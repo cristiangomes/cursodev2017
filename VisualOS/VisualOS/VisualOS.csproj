@@ -293,7 +293,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Cadastros\OrdemServico.cshtml" />
+    <Content Include="Views\Cadastros\CadastrarOS.cshtml" />
     <Content Include="Views\Cadastros\Servico.cshtml" />
   </ItemGroup>
   <ItemGroup>

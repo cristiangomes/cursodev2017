@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using VisualOS.DAL;
 
 namespace VisualOS.Controllers
 {
     public class CadastrosController : Controller
     {
-        
+
+        private tb_ordemservico OS = new tb_ordemservico();
         // GET: Cadastros
         public ActionResult Index()
         {
@@ -43,7 +45,11 @@ namespace VisualOS.Controllers
             }
         }
 
-      
+        public ActionResult CadastrarOS()
+        {
+            
+            return View();
+        }
 
         // GET: Cadastros/Edit/5
         public ActionResult Edit(int id)
