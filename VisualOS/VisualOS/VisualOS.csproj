@@ -294,8 +294,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Cadastros\OrdemServico.cshtml" />
-    <Content Include="Views\Cadastros\Servico.cshtml" />
-    <Content Include="Views\Cadastros\CadastrarCargoold.cshtml" />
     <Content Include="Views\Cadastros\CadastrarCargo.cshtml" />
     <Content Include="Views\Cadastros\CadastrarServico.cshtml" />
   </ItemGroup>
