@@ -1,14 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using VisualOS.DAL;
+using VisualOS.Models;
+using System.Data.Entity.Infrastructure;
 
 namespace VisualOS.Controllers
 {
     public class CadastrosController : Controller
     {
-        
+        private tb_servico servico = new tb_servico();
         // GET: Cadastros
         public ActionResult Index()
         {
@@ -43,7 +50,15 @@ namespace VisualOS.Controllers
             }
         }
 
-      
+        public ActionResult CadastrarServico()
+        {
+           
+            
+                return View();
+          
+
+          
+        }
 
         // GET: Cadastros/Edit/5
         public ActionResult Edit(int id)
