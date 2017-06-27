@@ -116,6 +116,22 @@ namespace VisualOS.Controllers
         {
             return View();
         }
+        
+        public ActionResult CadastrarUsuario()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CadastrarUsuario(tb_usuario usuarioModel)
+        {
+            Model1Container context = new Model1Container();
+            context.tb_usuario.Add(usuarioModel);
+            context.SaveChanges();
+
+            return RedirectToAction("CadastrarUsuario");
+        }
+        
     }
 }

@@ -296,6 +296,7 @@
     <Content Include="Views\Cadastros\CadastrarOS.cshtml" />
     <Content Include="Views\Cadastros\CadastrarCargo.cshtml" />
     <Content Include="Views\Cadastros\CadastrarServico.cshtml" />
+    <Content Include="Views\Cadastros\CadastrarUsuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
