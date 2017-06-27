@@ -173,6 +173,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CadastrosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DAL\Model1.Context.cs">
@@ -292,7 +293,9 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Cadastros\OrdemServico.cshtml" />
+    <Content Include="Views\Cadastros\CadastrarOS.cshtml" />
+    <Content Include="Views\Cadastros\CadastrarCargo.cshtml" />
+    <Content Include="Views\Cadastros\CadastrarServico.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
