@@ -1,0 +1,54 @@
+﻿@model IEnumerable<VisualOS.DAL.tb_ordemservico>
+
+@{
+    ViewBag.Title = "PesquisarOS";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Pesquisas</h2>
+<h4>Ordem de Serviço</h4>
+
+<p>
+    @Html.ActionLink("Nova Ordem de Serviço", "CadastrarOS", "Cadastros")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_Usuario_Responsavel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data_abertura)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data_conclusao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo_OS)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_Usuario_Responsavel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data_abertura)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data_conclusao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tipo_OS)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+        </td>
+    </tr>
+}
+    
+</table>
