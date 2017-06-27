@@ -176,6 +176,7 @@
     <Compile Include="Controllers\CadastrosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PesquisasController.cs" />
     <Compile Include="DAL\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -296,9 +297,11 @@
     <Content Include="Views\Cadastros\CadastrarOS.cshtml" />
     <Content Include="Views\Cadastros\CadastrarCargo.cshtml" />
     <Content Include="Views\Cadastros\CadastrarServico.cshtml" />
+    <Content Include="Views\Pesquisas\PesquisarOS.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\PesquisaOS\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

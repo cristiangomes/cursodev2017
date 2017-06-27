@@ -64,7 +64,6 @@ namespace VisualOS.Controllers
 
         public ActionResult CadastrarOS()
         {
-            
             return View();
         }
 
@@ -114,6 +113,20 @@ namespace VisualOS.Controllers
 
         public ActionResult CadastrarCargo()
         {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CadastrarOS(tb_ordemservico OSModel)
+        {
+            if (ModelState.IsValid)
+            {
+                Model1Container context = new Model1Container();
+                context.tb_ordemservico.Add(OSModel);
+                context.SaveChanges();
+                return RedirectToAction("CadastrarOS");
+            }
             return View();
         }
 
