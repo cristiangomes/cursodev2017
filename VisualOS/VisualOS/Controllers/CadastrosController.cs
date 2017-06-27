@@ -52,14 +52,22 @@ namespace VisualOS.Controllers
             }
         }
 
+        private Model1Container db = new Model1Container();
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CadastrarServico(tb_servico servico)
+        {
+            db.tb_servico.Add(servico);
+            db.SaveChanges();
+            return View();
+        }
+
         public ActionResult CadastrarServico()
         {
-           
             
-                return View();
-          
+            return View();         
 
-          
         }
 
         public ActionResult CadastrarOS()
