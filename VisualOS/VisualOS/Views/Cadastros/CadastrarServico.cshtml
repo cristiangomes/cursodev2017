@@ -7,7 +7,7 @@
 <h2>Servico</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("CadastrarServico", "Cadastros", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
@@ -20,7 +20,7 @@
                 Nome do Serviço
             </div>
             <div class="col-md-2">
-                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control"  } })
                 @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -36,13 +36,14 @@
             @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
         </div>
     </div>
-
+    <br />
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
+            <br />
+            <input type="submit" value="CadastrarServico" class="btn btn-default" />
         </div>
     </div>
-    </div>
+    
 
         }
 

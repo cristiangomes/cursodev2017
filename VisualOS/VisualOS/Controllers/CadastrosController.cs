@@ -18,6 +18,9 @@ namespace VisualOS.Controllers
         private tb_servico servico = new tb_servico();
 
         private tb_ordemservico OS = new tb_ordemservico();
+
+        private tb_cargo cargo = new tb_cargo();
+
         // GET: Cadastros
         public ActionResult Index()
         {
@@ -50,6 +53,17 @@ namespace VisualOS.Controllers
             {
                 return View();
             }
+        }
+
+        private Model1Container db = new Model1Container();
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CadastrarServico(tb_servico servico)
+        {
+            db.tb_servico.Add(servico);
+            db.SaveChanges();
+            return View();
         }
 
         public ActionResult CadastrarServico()
@@ -130,5 +144,19 @@ namespace VisualOS.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CadastrarCargo(tb_cargo Cadastro)
+        {
+            if (ModelState.IsValid)
+            {
+                Model1Container context = new Model1Container();
+                context.tb_cargo.Add(Cadastro);
+                context.SaveChanges();
+                return RedirectToAction("CadastrarCargo");
+            }
+
+            return View();
+        }
     }
 }
