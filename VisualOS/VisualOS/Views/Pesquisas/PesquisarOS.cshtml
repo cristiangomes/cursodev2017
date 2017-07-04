@@ -12,43 +12,37 @@
     @Html.ActionLink("Nova Ordem de Serviço", "CadastrarOS", "Cadastros")
 </div>
 <table class="table">
-    <tr>
+    <tr>       
         <th>
-            @Html.DisplayNameFor(model => model.ID_Usuario_Responsavel)
+            Data de Abertura
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Data_abertura)
+            Data de Conclusão
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Data_conclusao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tipo_OS)
+            Tipo OS
         </th>
         <th></th>
     </tr>
 
-@foreach (tb_ordemservico OS in ViewBag.ListaOS)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ID_Usuario_Responsavel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Data_abertura)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Data_conclusao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tipo_OS)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-        </td>
-    </tr>
-}
-    
+    @foreach (var item in Model)
+    {
+        <tr>           
+            <td>
+                @Html.DisplayFor(modelItem => item.Data_abertura)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data_conclusao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo_OS)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
 </table>
