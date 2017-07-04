@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using VisualOS.DAL;
 
 namespace VisualOS.Controllers
 {
     public class PesquisasController : Controller
     {
         // GET: Pesquisas
-        public ActionResult Index()
-        {
-            return View();
-        }
+        private Model1Container db = new Model1Container();
+
         public ActionResult PesquisarOS()
         {
-            return View();
+            var ListaOS = from o in db.tb_ordemservico select o;
+            ListaOS = ListaOS.Where(os => os.Data_abertura != null);
+            return View(ListaOS);
         }
     }
 }
