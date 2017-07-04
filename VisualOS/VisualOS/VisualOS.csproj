@@ -306,6 +306,7 @@
     <Content Include="Views\Cadastros\CadastrarServico.cshtml" />
     <Content Include="Views\Pesquisas\PesquisarOS.cshtml" />
     <Content Include="Views\Cadastros\CadastrarUsuario.cshtml" />
+    <Content Include="Views\Pesquisas\PesquisarServico.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
