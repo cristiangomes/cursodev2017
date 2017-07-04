@@ -8,9 +8,9 @@
 <h2>Pesquisas</h2>
 <h4>Ordem de Serviço</h4>
 
-<p>
+<div style="float: right; margin-bottom: 15px; margin-top: 15px">
     @Html.ActionLink("Nova Ordem de Serviço", "CadastrarOS", "Cadastros")
-</p>
+</div>
 <table class="table">
     <tr>
         <th>
@@ -28,7 +28,7 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model)
+@foreach (tb_ordemservico OS in ViewBag.ListaOS)
 {
     <tr>
         <td>
