@@ -15,9 +15,12 @@ namespace VisualOS.Controllers
 
         public ActionResult PesquisarOS()
         {
-            var ListaOS = from o in db.tb_ordemservico select o;
-            ListaOS = ListaOS.Where(os => os.Data_abertura != null);
-            return View(ListaOS);
+            //var ListaOS = from o in db.tb_ordemservico select o;
+            //ListaOS = ListaOS.Where(os => os.Data_abertura != null);
+            List<tb_ordemservico> ListaOS = new List<tb_ordemservico>();
+            Random random = new Random();
+            //ListaOS = CriaListaOSMock(random.Next(1, 20));
+            return View(CriaListaOSMock(random.Next(1, 20)));
         }
 
         public ActionResult PesquisarUsuario()
@@ -48,8 +51,31 @@ namespace VisualOS.Controllers
             return listaUsuarios;
 
         }
+            return ListaOS;
+        }
 
+        public ActionResult PesquisarServico()
+        {
+            Random random = new Random();
+            return View(CriaServicosMock(random.Next(123123)));
+        }
+
+        private List<tb_servico> CriaServicosMock(int qtdItens)
+        {
+            Random random = new Random();
+            List<tb_servico> listaServicos = new List<tb_servico>();
+            for (int i = 0; i < qtdItens; i++)
+            {
+                const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                tb_servico servico = new tb_servico();
+                listaServicos.Add(servico);
+                servico.Nome = random.Next().ToString();
+                servico.Descricao = random.Next().ToString();
+            }
+            return listaServicos;
+        }
 
 
     }
+
 }
