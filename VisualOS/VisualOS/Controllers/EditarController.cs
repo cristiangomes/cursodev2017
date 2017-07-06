@@ -14,5 +14,10 @@ namespace VisualOS.Controllers
         {
             return View(CriaListaOSMock(1)[0]);
         }
+        //public ActionResult EditarServico()
+        //{
+        //    Random random = new Random();
+        //    return View(CriaServicosMock(random.Next(4)));
+        //}
     }
 }
