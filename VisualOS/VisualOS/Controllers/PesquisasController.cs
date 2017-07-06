@@ -70,6 +70,8 @@ namespace VisualOS.Controllers
                 listaServicos.Add(servico);
                 servico.Nome = random.Next().ToString();
                 servico.Descricao = random.Next().ToString();
+                ViewBag.Nome = servico.Nome;
+                ViewBag.Descrição = servico.Descricao;
             }
             return listaServicos;
         }
