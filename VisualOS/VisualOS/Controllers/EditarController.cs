@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using VisualOS.DAL;
 
 namespace VisualOS.Controllers
 {
-    public class EditarController : Controller
+    public class EditarController : ControllerBase
     {
         // GET: Editar
-        public ActionResult Index()
+        public ActionResult EditarOS()
         {
-            return View();
+            return View(CriaListaOSMock(1)[0]);
         }
+        //public ActionResult EditarServico()
+        //{
+        //    Random random = new Random();
+        //    return View(CriaServicosMock(random.Next(4)));
+        //}
     }
 }
