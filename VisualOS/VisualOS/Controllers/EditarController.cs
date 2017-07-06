@@ -9,8 +9,9 @@ namespace VisualOS.Controllers
     public class EditarController : Controller
     {
         // GET: Editar
-        public ActionResult Index()
+        public ActionResult EditarOS()
         {
+
             return View();
         }
     }
