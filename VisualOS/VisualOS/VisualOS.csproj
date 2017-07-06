@@ -309,6 +309,7 @@
     <Content Include="Views\Pesquisas\PesquisarOS.cshtml" />
     <Content Include="Views\Cadastros\CadastrarUsuario.cshtml" />
     <Content Include="Views\Pesquisas\PesquisarServico.cshtml" />
+    <Content Include="Views\Pesquisas\PesquisarUsuario.cshtml" />
     <Content Include="Views\Editar\EditarServico.cshtml" />
     <Content Include="Views\Editar\EditarOS.cshtml" />
   </ItemGroup>
