@@ -28,6 +28,7 @@ namespace VisualOS.Controllers
         {
             Random random = new Random();
             return View(CriaServicosMock(random.Next(123123)));
+           
         }
     }
 
