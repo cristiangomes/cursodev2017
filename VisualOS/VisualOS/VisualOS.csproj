@@ -314,6 +314,7 @@
     <Content Include="Views\Editar\EditarServico.cshtml" />
     <Content Include="Views\Editar\EditarOS.cshtml" />
     <Content Include="Views\Detalhes\DetalheOS.cshtml" />
+    <Content Include="Views\Editar\EditarUsuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

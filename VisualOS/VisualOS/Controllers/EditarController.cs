@@ -19,5 +19,10 @@ namespace VisualOS.Controllers
         //    Random random = new Random();
         //    return View(CriaServicosMock(random.Next(4)));
         //}
+
+        public ActionResult EditarUsuario()
+        {
+            return View(CriaListaUsuariosMOCK(1)[0]);
+        }
     }
 }
