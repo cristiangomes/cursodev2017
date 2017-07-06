@@ -180,6 +180,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CadastrosController.cs" />
     <Compile Include="Controllers\ControllerBase.cs" />
+    <Compile Include="Controllers\DetalhesController.cs" />
     <Compile Include="Controllers\EditarController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -312,6 +313,7 @@
     <Content Include="Views\Pesquisas\PesquisarUsuario.cshtml" />
     <Content Include="Views\Editar\EditarServico.cshtml" />
     <Content Include="Views\Editar\EditarOS.cshtml" />
+    <Content Include="Views\Detalhes\DetalheOS.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

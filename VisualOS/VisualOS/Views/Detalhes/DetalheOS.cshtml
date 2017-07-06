@@ -1,0 +1,43 @@
+﻿@model VisualOS.DAL.tb_ordemservico
+
+@{
+    ViewBag.Title = "DetalheOS";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Ordem de Serviço</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Data_abertura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data_abertura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data_conclusao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data_conclusao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo_OS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo_OS)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "EditarOS", "Editar") |
+    @Html.ActionLink("Volte à pesquisa", "PesquisarOS", "Pesquisas")
+</p>
