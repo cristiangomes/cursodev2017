@@ -9,6 +9,8 @@ namespace VisualOS.Controllers
 {
     public class ControllerBase : Controller
     {
+        private Model1Container db = new Model1Container();
+
         public List<tb_ordemservico> CriaListaOSMock(int qtdItens)
         {
             List<tb_ordemservico> ListaOS = new List<tb_ordemservico>();

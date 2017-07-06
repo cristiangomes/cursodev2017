@@ -11,7 +11,6 @@ namespace VisualOS.Controllers
     {
 
         // GET: Pesquisas
-        private Model1Container db = new Model1Container();
 
         public ActionResult PesquisarUsuario()
         {
