@@ -1,0 +1,40 @@
+﻿@model IEnumerable<VisualOS.DAL.tb_cargo>
+
+@{
+    ViewBag.Title = "PesquisarCargo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Pesquisar Cargo</h2>
+
+<p>
+    @Html.ActionLink("Criar Cargo", "CadastrarCargo", "Cadastros" )
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "EditarCargo", "Editar") |
+            @Html.ActionLink("Detalhes", "DetalhesCargo", "Detalhes" ) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

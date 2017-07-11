@@ -79,5 +79,19 @@ namespace VisualOS.Controllers
             return listaUsuarios;
 
         }
+        public List<tb_cargo> CriarCargosMock(int qtdCargos)
+        {
+            List<tb_cargo> listaCargos = new List<tb_cargo>();
+            Random random = new Random();
+            for (int i = 0; i < qtdCargos; i++)
+            {
+                tb_cargo cargo = new tb_cargo();
+                listaCargos.Add(cargo);
+                cargo.Nome = random.Next().ToString();
+                cargo.Descricao = random.Next().ToString();
+            }
+            return listaCargos;
+        }
+
     }
 }

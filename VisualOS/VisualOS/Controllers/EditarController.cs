@@ -25,5 +25,9 @@ namespace VisualOS.Controllers
             Random random = new Random();
             return View(CriaServicosMock(1)[0]);
         }
+        public ActionResult EditarCargo()
+        {
+            return View(CriarCargosMock(1)[0]);
+        }
     }
 }
