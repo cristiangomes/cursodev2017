@@ -34,7 +34,6 @@ namespace VisualOS.Controllers
         {
             Random random = new Random();
             return View(CriarCargosMock(random.Next(5, 10)));
-
         }
 
         public ActionResult DeletarOS()
