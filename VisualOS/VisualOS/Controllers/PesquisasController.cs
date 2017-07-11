@@ -30,6 +30,11 @@ namespace VisualOS.Controllers
             return View(CriaServicosMock(random.Next(123123)));
            
         }
+
+        public ActionResult DeletarOS()
+        {
+            return RedirectToAction("PesquisarOS");
+        }
     }
 
 }

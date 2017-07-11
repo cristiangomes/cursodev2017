@@ -19,7 +19,7 @@
         <th>
             Data de Conclusão
         </th>
-        <th>
+        <th class="esconde-coluna-TipoOS">
             Tipo OS
         </th>
         <th></th>
@@ -34,13 +34,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Data_conclusao)
             </td>
-            <td>
+            <td class="esconde-coluna-TipoOS">
                 @Html.DisplayFor(modelItem => item.Tipo_OS)
             </td>
             <td>
                 @Html.ActionLink("Editar", "EditarOS", "Editar") |
                 @Html.ActionLink("Detalhes", "DetalheOS", "Detalhes") |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                @Html.ActionLink("Delete", "DeletarOS", "PesquisarOS", new { onclick="confirm('Tem certeza que quer deletar?')" })
             </td>
         </tr>
     }
