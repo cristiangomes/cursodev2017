@@ -180,7 +180,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CadastrosController.cs" />
     <Compile Include="Controllers\ControllerBase.cs" />
-    <Compile Include="Controllers\DeleteCargoController.cs" />
     <Compile Include="Controllers\DetalhesController.cs" />
     <Compile Include="Controllers\EditarController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -319,9 +318,12 @@
     <Content Include="Views\Pesquisas\PesquisarCargo.cshtml" />
     <Content Include="Views\Editar\EditarCargo.cshtml" />
     <Content Include="Views\Detalhes\DetalhesCargo.cshtml" />
+    <Content Include="Views\Detalhes\DetalheServico.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Excluir\" />
+
     <Folder Include="Views\DeleteCargo\" />
   </ItemGroup>
   <ItemGroup>
