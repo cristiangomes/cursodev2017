@@ -16,7 +16,7 @@ namespace VisualOS.Controllers
         {
             return View("PesquisarUsuario", CriaListaUsuariosMOCK(10));
         }
-       
+
         public ActionResult PesquisarOS()
         {
             List<tb_ordemservico> ListaOS = new List<tb_ordemservico>();
@@ -27,14 +27,14 @@ namespace VisualOS.Controllers
         public ActionResult PesquisarServico()
         {
             Random random = new Random();
-            return View(CriaServicosMock(random.Next(20)));   
+            return View(CriaServicosMock(random.Next(20)));
         }
 
         public ActionResult PesquisarCargo()
         {
             Random random = new Random();
             return View(CriarCargosMock(random.Next(5, 10)));
-           
+
         }
 
         public ActionResult DeletarOS()
@@ -46,9 +46,10 @@ namespace VisualOS.Controllers
         {
             return RedirectToAction("PesquisarUsuario");
         }
-public ActionResult DeletarCargo()
+
+        public ActionResult DeletarCargo()
         {
-            return RedirectToAction ("PesquisarCargo");
+            return RedirectToAction("PesquisarCargo");
         }
     }
 
