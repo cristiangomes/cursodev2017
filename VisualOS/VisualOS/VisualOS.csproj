@@ -315,9 +315,11 @@
     <Content Include="Views\Editar\EditarOS.cshtml" />
     <Content Include="Views\Detalhes\DetalheOS.cshtml" />
     <Content Include="Views\Editar\EditarUsuario.cshtml" />
+    <Content Include="Views\Detalhes\DetalheServico.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Excluir\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
