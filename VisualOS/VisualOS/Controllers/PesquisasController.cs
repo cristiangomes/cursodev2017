@@ -27,8 +27,14 @@ namespace VisualOS.Controllers
         public ActionResult PesquisarServico()
         {
             Random random = new Random();
-            return View(CriaServicosMock(random.Next(123123)));
-           
+            return View(CriaServicosMock(random.Next(123123)));   
+        }
+
+        public ActionResult PesquisarCargo()
+        {
+            Random random = new Random();
+            return View(CriarCargosMock(random.Next(5, 10)));
+
         }
 
         public ActionResult DeletarOS()

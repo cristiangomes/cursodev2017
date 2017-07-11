@@ -13,5 +13,9 @@ namespace VisualOS.Controllers
         {
             return View(CriaListaOSMock(1)[0]);
         }
+        public ActionResult DetalhesCargo()
+        {
+            return View(CriarCargosMock(1)[0]);
+        }
     }
 }
