@@ -318,9 +318,11 @@
     <Content Include="Views\Pesquisas\PesquisarCargo.cshtml" />
     <Content Include="Views\Editar\EditarCargo.cshtml" />
     <Content Include="Views\Detalhes\DetalhesCargo.cshtml" />
+    <Content Include="Views\Detalhes\DetalheServico.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Excluir\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

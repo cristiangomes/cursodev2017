@@ -16,25 +16,36 @@
             @Html.DisplayNameFor(model => model.Nome)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Descricao)
+            <div class="esconderDescricao">
+                @Html.DisplayNameFor(model => model.Descricao)
+            </div>
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descricao)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "EditarServico", "Editar") |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+
+            <td>
+                <div class="esconderDescricao">
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </div>
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "EditarServico", "Editar") |
+                @Html.ActionLink("Details", "DetalheServico", "Detalhes") |
+                <a href="#" onclick="confirm('Você')">
+                    @Html.ActionLink("Delete", "PesquisarServico","Pesquisas", new {onclick="return confirm('Você quer mesmo excluir o serviço " + item.Nome +  "?') ;"})
+                </a>
+            </td>
+        </tr>
+    }
 
 </table>
+
+<a href="#" onclick="confirm('Você')">Teste</a>
