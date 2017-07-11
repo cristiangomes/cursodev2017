@@ -36,6 +36,11 @@ namespace VisualOS.Controllers
             return View(CriarCargosMock(random.Next(5, 10)));
 
         }
+
+        public ActionResult DeletarUsuario()
+        {
+            return RedirectToAction("PesquisarUsuario");
+        }
     }
 
 }

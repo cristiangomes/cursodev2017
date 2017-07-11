@@ -30,7 +30,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Telefone)
         </th>
-        <th>
+        <th class="escondercoluna">            
             @Html.DisplayNameFor(model => model.Senha)
         </th>
         <th></th>
@@ -53,7 +53,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.NomeCompleto)
         </td>
-        <td>
+        <td class="escondercoluna">
             @Html.DisplayFor(modelItem => item.Senha)
         </td>
         <td>
@@ -62,9 +62,19 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Delete", "DeletarUsuario", "Pesquisas", new { id=item.ID, onclick = "confirm('Deseja realmente confirmar!')" })
         </td>
-    </tr>
-}
-
+    </tr>    
+}   
 </table>
+
+<a href="#" onclick="confirm('Deseja realmente confirmar passada por parametro no javascript!')">TESTE1</a>
+<br />
+<a href="#" onclick="myFunction()">TESTE2</a>
+
+
+<script>
+function myFunction() {
+    confirm("Deseja realmente confirmar pela função javascript!");
+}
+</script>
