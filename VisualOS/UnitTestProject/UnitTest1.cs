@@ -41,7 +41,11 @@ namespace UnitTestProject
         [TestMethod]
         public void TestMockUsuario()
         {
-            
+            List<tb_usuario> Usuario = new List<tb_usuario>();
+            VisualOS.Controllers.ControllerBase controller = new VisualOS.Controllers.ControllerBase();
+            Usuario = controller.CriaListaUsuariosMOCK(5);
+
+            Assert.AreEqual(Usuario[1].ID, 34);
         }
     }
 }
