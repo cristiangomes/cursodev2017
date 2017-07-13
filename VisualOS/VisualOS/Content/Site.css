@@ -43,3 +43,12 @@ textarea {
         display:none;
     }
 }
+
+
+@media (max-width: 480px) {
+.esconderDescricaoCargo {
+        display: none;
+    }
+}
+
+
