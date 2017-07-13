@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using VisualOS.Controllers;
 
 
 namespace UnitTestProject
@@ -9,6 +10,10 @@ namespace UnitTestProject
     {
         [TestMethod]
         public void TestMockServico()
+        {
+        }
+
+        public void TestMockOS()
         {
 
         }
