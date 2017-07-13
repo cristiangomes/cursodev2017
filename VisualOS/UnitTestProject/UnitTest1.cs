@@ -22,7 +22,10 @@ namespace UnitTestProject
             VisualOS.Controllers.ControllerBase controller = new VisualOS.Controllers.ControllerBase();
             OS = controller.CriaListaOSMock(3);
 
+            Assert.AreNotEqual(OS[0].ID, 22);
+            Assert.AreEqual(OS.Count, 3);
         }
+
         public void TesteMockCargo()
         {
         }
@@ -33,8 +36,4 @@ namespace UnitTestProject
         }
     }
 }
-            Assert.AreNotEqual(OS[0].ID, 22);
-            Assert.AreEqual(OS.Count, 3);
-        }
-    }
-}
+            
