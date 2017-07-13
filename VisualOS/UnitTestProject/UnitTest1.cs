@@ -10,5 +10,9 @@ namespace UnitTestProject
         public void TestMethod1()
         {
         }
+
+        public void TestMOCKUsuario()
+        {
+        }
     }
 }
