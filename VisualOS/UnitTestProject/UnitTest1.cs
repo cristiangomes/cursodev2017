@@ -11,7 +11,7 @@ namespace UnitTestProject
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestMockServico()
         {
         }
 
@@ -22,6 +22,17 @@ namespace UnitTestProject
             VisualOS.Controllers.ControllerBase controller = new VisualOS.Controllers.ControllerBase();
             OS = controller.CriaListaOSMock(3);
 
+        }
+        public void TesteMockCargo()
+        {
+        }
+
+        public void TestMockUsuario()
+        {
+            
+        }
+    }
+}
             Assert.AreNotEqual(OS[0].ID, 22);
             Assert.AreEqual(OS.Count, 3);
         }
