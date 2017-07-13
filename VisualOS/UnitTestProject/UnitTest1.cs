@@ -17,7 +17,6 @@ namespace UnitTestProject
             listaServicos = controler.CriaServicosMock(4);
 
             Assert.AreEqual(3, listaServicos.Count);
-
         }
 
         [TestMethod]
