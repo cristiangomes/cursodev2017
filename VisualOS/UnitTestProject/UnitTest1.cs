@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VisualOS.Controllers;
 using System.Collections.Generic;
 using VisualOS.DAL;
@@ -13,6 +12,12 @@ namespace UnitTestProject
         [TestMethod]
         public void TestMockServico()
         {
+            VisualOS.Controllers.ControllerBase controler = new VisualOS.Controllers.ControllerBase();
+            List<tb_servico> listaServicos = new List<tb_servico>();
+            listaServicos = controler.CriaServicosMock(4);
+
+            Assert.AreEqual(3, listaServicos.Count);
+
         }
 
         [TestMethod]
