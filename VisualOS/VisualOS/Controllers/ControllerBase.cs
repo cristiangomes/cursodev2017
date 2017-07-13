@@ -42,6 +42,11 @@ namespace VisualOS.Controllers
             return ListaOS;
         }
 
+        public List<tb_cargo> CriarCargosMock()
+        {
+            throw new NotImplementedException();
+        }
+
         public List<tb_servico> CriaServicosMock(int qtdItens)
         {
             Random random = new Random();

@@ -21,19 +21,24 @@ namespace UnitTestProject
             List<tb_ordemservico> OS = new List<tb_ordemservico>();
             VisualOS.Controllers.ControllerBase controller = new VisualOS.Controllers.ControllerBase();
             OS = controller.CriaListaOSMock(3);
-
-            Assert.AreNotEqual(OS[0].ID, 22);
-            Assert.AreEqual(OS.Count, 3);
         }
 
+        [TestMethod]
         public void TesteMockCargo()
         {
+            List<tb_cargo> Cargos = new List<tb_cargo>();
+            VisualOS.Controllers.ControllerBase controller = new VisualOS.Controllers.ControllerBase();
+            Cargos = controller.CriarCargosMock(2);
+
+            Assert.AreNotEqual(Cargos[1].ID, 22);
+            Assert.AreEqual(Cargos.Count, 2);
         }
 
+        [TestMethod]
         public void TestMockUsuario()
         {
             
         }
     }
 }
-            
+   
